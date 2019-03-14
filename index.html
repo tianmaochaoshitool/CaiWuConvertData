@@ -1,34 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>发票清单 数据转换</title>
     <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="./Data/productCorrespond.js"></script>
     <style type="text/css">
-        .sty1 {
-            width: 80%;
-            height: 200px;
-        }
+      .sty1 {
+        width: 80%;
+        height: 200px;
+      }
     </style>
     <script>
-        $(function () {
-            $('.btn').click(function () {
-                alert('1')
-            });
+      function loadXML(path) {
+        var xmlDoc;
+        try {
+          //IE
+          xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+        } catch (e) {
+          //firefox,opera
+          xmlDoc = document.implementation.createDocument("", "", null);
+        }
+        try {
+          xmlDoc.asyc = false; //是否异步调用
+          xmlDoc.load(path); //文件路径
+        } catch (e) {
+          //chrome
+          var xmlhttp = new window.XMLHttpRequest();
+          xmlhttp.open("GET", path, false); //创建一个新的http请求，并指定此请求的方法、URL以及验证信息
+          xmlhttp.send();
+          xmlDoc = xmlhttp.responseXML;
+        }
+        return xmlDoc;
+      }
+      var xmlDoc = loadXML("./Data/productCode.xml");
+      var xmlData = xmlDoc
+        .getElementsByTagName("body")[0]
+        .getElementsByTagName("BMXX");
+      console.log("xmlData", xmlData);
+
+      var OProductData = [];
+      for (var i = 0; i < xmlData.length; i++) {
+        //简码
+        var JM = xmlData[i].getElementsByTagName("JM")[0].childNodes[0]
+          .nodeValue;
+        //类目
+        var SPBMJC = xmlData[i].getElementsByTagName("SPBMJC")[0].childNodes[0]
+          .nodeValue;
+        //名称
+        var SPMC = xmlData[i].getElementsByTagName("SPMC")[0].childNodes[0]
+          .nodeValue;
+        //规格型号
+        var GGXH = xmlData[i].getElementsByTagName("GGXH")[0].childNodes[0]
+          .nodeValue;
+        //包装
+        var JLDW = xmlData[i].getElementsByTagName("JLDW")[0].childNodes[0]
+          .nodeValue;
+        //税率
+        var KYSL = xmlData[i]
+          .getElementsByTagName("KYSL")[0]
+          .childNodes[0].nodeValue.replace("%", "");
+        KYSL = parseInt(KYSL) / 100;
+
+        OProductData.push({
+          JM: JM,
+          CODE: productCorrespond[JM],
+          SPBMJC: SPBMJC,
+          SPMC: SPMC,
+          GGXH: GGXH,
+          JLDW: JLDW,
+          KYSL: KYSL
         });
+      }
 
+      $(function() {
+        $(".btn").click(function() {
+          var NProductData = [];
+
+          var oldval = $(".oldData").val();
+          console.log(oldval);
+          var oldvalArr = $.trim(oldval).split("\n");
+          console.log(oldvalArr.length);
+          for (var i in oldvalArr) {
+            var item = $.trim(oldvalArr[i]);
+            var itemArr = item.split("\t");
+            console.log("item", itemArr.length);
+            for (var u in itemArr) {
+              console.log("itemarr", itemArr[u]);
+              if (itemArr[u].length == 13) {
+                var CODE = itemArr[u];
+                var Count = itemArr[parseInt(u) + 3];
+                var TotalPrice = itemArr[parseInt(u) + 5];
+
+                var OOldItem = OProductData.filter(item => item.CODE == CODE);
+                if (OOldItem.length != 1) alert(CODE + "没有找到对应数据");
+                else {
+                  OOldItem[0].Count = Count;
+                  OOldItem[0].TotalPrice = TotalPrice;
+                  NProductData.push(OOldItem[0]);
+                }
+                break;
+              }
+            }
+          }
+
+          console.log("NProductData", NProductData);
+          var output = "";
+          for (var i in NProductData) {
+            var Nitem = NProductData[i];
+            output +=
+              "*" +
+              Nitem.SPBMJC +
+              "*" +
+              Nitem.SPMC +
+              "\t" +
+              Nitem.GGXH +
+              "\t" +
+              Nitem.JLDW +
+              "\t\t\t" +
+              Nitem.TotalPrice +
+              "\t" +
+              Nitem.KYSL +
+              "\n";
+          }
+          $(".newData").val(output);
+        });
+      });
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <textarea class="oldData sty1"></textarea>
     <br /><br />
-    <input type="button" class='btn' value="转 换" />
+    <input type="button" class="btn" value="转 换" />
     <br /><br />
     <textarea class="newData sty1"></textarea>
-</body>
-
+  </body>
 </html>
