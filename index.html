@@ -107,25 +107,65 @@
           }
 
           console.log("NProductData", NProductData);
-          var output = "";
+          var output = [
+            [
+              "序号",
+              "货物或应税劳务、服务名称",
+              "计量单位",
+              "规格型号",
+              "数量",
+              "金额",
+              "税率",
+              "商品税目",
+              "折扣金额",
+              "税额",
+              "折扣税额",
+              "折扣率",
+              "单价",
+              "价格方式",
+              "税收分类编码版本号",
+              "税收分类编码",
+              "企业商品编码",
+              "使用优惠政策标识",
+              "零税率标识",
+              "优惠政策说明",
+              "中外合作油气田标识"
+            ]
+          ];
           for (var i in NProductData) {
             var Nitem = NProductData[i];
-            output +=
-              "*" +
-              Nitem.SPBMJC +
-              "*" +
-              Nitem.SPMC +
-              "\t" +
-              Nitem.GGXH +
-              "\t" +
-              Nitem.JLDW +
-              "\t\t\t" +
-              Nitem.TotalPrice +
-              "\t" +
-              Nitem.KYSL +
-              "\n";
+            output.push([
+              parseInt(i) + 1,
+              "*" + Nitem.SPBMJC + "*" + Nitem.SPMC,
+              Nitem.JLDW,
+              Nitem.GGXH,
+              Nitem.Count,
+              Nitem.TotalPrice,
+              Nitem.KYSL,
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]);
           }
-          $(".newData").val(output);
+          var coutput = "";
+          for (var q in output) {
+            for (var w in output[q]) {
+              coutput += output[q][w] + "\t";
+            }
+            coutput += "\n";
+          }
+          $(".newData").val(coutput);
         });
       });
     </script>
