@@ -68,16 +68,18 @@ namespace WindowsFormsApplication1
         void t_Tick(object sender, EventArgs e)
         {
             t.Stop();
-
-            ItemListStringIndex++;
-            if (ItemListStringIndex >= ItemListString.Count)
+            try
             {
-                ItemListStringIndex = 0;
+                ItemListStringIndex++;
+                if (ItemListStringIndex >= ItemListString.Count)
+                {
+                    ItemListStringIndex = 0;
+                }
+                var obj = ItemListString[ItemListStringIndex];
+
+                Clipboard.SetDataObject(obj.ToString(), true);
             }
-            var obj = ItemListString[ItemListStringIndex];
-
-            Clipboard.SetDataObject(obj.ToString(), true);
-
+            catch { }
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -89,12 +91,12 @@ namespace WindowsFormsApplication1
 
         private void start_Click(object sender, EventArgs e)
         {
-            var Val = this.start.Text.ToString();
+            var Val = this.textBox1.Text.ToString();
             Val = Val.Replace("\r", "").Replace("\n", "");
 
             ItemList = new List<Item>();
             JavaScriptSerializer json = new JavaScriptSerializer();
-            //ItemList = json.Deserialize<List<Item>>(Val);
+            ItemList = json.Deserialize<List<Item>>(Val);
 
             //
             //ItemList.Add(new Item { name = "A", count = 1, TotalPrice = 110.11 });

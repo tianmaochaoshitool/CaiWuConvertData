@@ -9,3 +9,8 @@ c:\users\ljg\documents\visual studio 2010\Projects\WindowsFormsApplication1\Wind
 E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
 E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
