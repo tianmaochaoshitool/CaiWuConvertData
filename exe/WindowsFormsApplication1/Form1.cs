@@ -109,8 +109,8 @@ namespace WindowsFormsApplication1
             foreach (var item in ItemList)
             {
                 ItemListString.Add(item.name);
-                ItemListString.Add(item.count);
-                ItemListString.Add(item.TotalPrice);
+                //ItemListString.Add(item.count);
+                //ItemListString.Add(item.TotalPrice);
             }
             ItemListStringIndex = -1;
             Next();

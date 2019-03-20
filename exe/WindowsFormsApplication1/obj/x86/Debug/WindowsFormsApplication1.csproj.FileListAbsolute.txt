@@ -14,3 +14,4 @@ E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\bin\Debug\WindowsFormsAp
 E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
 E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
 E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+E:\MyCode\CaiWuConvertData\exe\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
