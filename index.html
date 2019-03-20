@@ -132,8 +132,14 @@
               "中外合作油气田标识"
             ]
           ];
+          var outputJSON = [];
           for (var i in NProductData) {
             var Nitem = NProductData[i];
+            outputJSON.push({
+              name: Nitem.SPMC,
+              count: parseInt(Nitem.Count),
+              TotalPrice: parseFloat(Nitem.TotalPrice)
+            });
             output.push([
               parseInt(i) + 1,
               "*" + Nitem.SPBMJC + "*" + Nitem.SPMC,
@@ -166,6 +172,7 @@
             coutput += "\n";
           }
           $(".newData").val(coutput);
+          $(".newDataJSON").val(JSON.stringify(outputJSON));
         });
       });
     </script>
@@ -177,5 +184,7 @@
     <input type="button" class="btn" value="转 换" />
     <br /><br />
     <textarea class="newData sty1"></textarea>
+    <br /><br />
+    <textarea class="newDataJSON sty1"></textarea>
   </body>
 </html>
