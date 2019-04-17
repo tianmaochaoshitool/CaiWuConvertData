@@ -103,12 +103,12 @@
                 var NOldIndex = NProductData.findIndex(item => item.CODE == CODE);
                 if (OOldItem.length != 1) alert(CODE + "没有找到对应数据");
                 else if(NOldIndex>-1) {
-                  NProductData[NOldIndex].Count += Count;
-                  NProductData[NOldIndex].TotalPrice += TotalPrice;
+                  NProductData[NOldIndex].Count +=parseInt( Count);
+                  NProductData[NOldIndex].TotalPrice +=parseFloat( TotalPrice);
                 }
                 else{
-                  OOldItem[0].Count = Count;
-                  OOldItem[0].TotalPrice = TotalPrice;
+                  OOldItem[0].Count = parseInt( Count);
+                  OOldItem[0].TotalPrice = parseFloat( TotalPrice);
                   NProductData.push(OOldItem[0]);
                 }
                 break;
