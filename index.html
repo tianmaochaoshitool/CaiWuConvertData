@@ -75,7 +75,8 @@
           SPMC: SPMC,
           GGXH: GGXH,
           JLDW: JLDW,
-          KYSL: KYSL
+          KYSL: KYSL,
+          Count:0,TotalPrice:0
         });
       }
 
@@ -99,8 +100,13 @@
                 var TotalPrice = itemArr[parseInt(u) + 5];
 
                 var OOldItem = OProductData.filter(item => item.CODE == CODE);
+                var NOldIndex = NProductData.findIndex(item => item.CODE == CODE);
                 if (OOldItem.length != 1) alert(CODE + "没有找到对应数据");
-                else {
+                else if(NOldIndex>-1) {
+                  NProductData[NOldIndex].Count += Count;
+                  NProductData[NOldIndex].TotalPrice += TotalPrice;
+                }
+                else{
                   OOldItem[0].Count = Count;
                   OOldItem[0].TotalPrice = TotalPrice;
                   NProductData.push(OOldItem[0]);
@@ -159,7 +165,7 @@
               "",
               "",
               1,
-              "30.0",
+              "33.0",
               Nitem.PID,
               Nitem.PID,
               0,
