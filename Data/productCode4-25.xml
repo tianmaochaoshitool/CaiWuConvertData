@@ -4,8 +4,8 @@
   <body>
     <returnCode>00</returnCode>
     <returnMessage>成功</returnMessage>
-    <BBH>30.0</BBH>
-    <COUNT>9</COUNT>
+    <BBH>33.0</BBH>
+    <COUNT>10</COUNT>
     <MWJY>000000001</MWJY>
     <BMXX>
       <SPBM>106040805000000000001</SPBM>
@@ -14,7 +14,7 @@
       <SPMC>hape40粒彩虹积木</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>HAPE40LCHJM</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>E8321</GGXH>
       <JLDW>盒</JLDW>
       <DJ></DJ>
@@ -26,12 +26,12 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
-      <KYSL>13%</KYSL>
+      <KYSL>16%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>7</SYPC>
-      <SYSJ>43532.8700231481</SYSJ>
+      <SYPC>19</SYPC>
+      <SYSJ>43544.7594097222</SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
@@ -46,7 +46,7 @@
       <SPMC>hape60块益智积木</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>HAPE60KYZJM</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>E8389</GGXH>
       <JLDW>盒</JLDW>
       <DJ></DJ>
@@ -58,12 +58,12 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
-      <KYSL>13%</KYSL>
+      <KYSL>16%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>7</SYPC>
-      <SYSJ>43532.8700231481</SYSJ>
+      <SYPC>17</SYPC>
+      <SYSJ>43544.7496990741</SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
@@ -78,7 +78,7 @@
       <SPMC>hape80粒积木桶装</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>HAPE80LJMTZ</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>E8402</GGXH>
       <JLDW>桶</JLDW>
       <DJ></DJ>
@@ -90,12 +90,12 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
-      <KYSL>13%</KYSL>
+      <KYSL>16%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>6</SYPC>
-      <SYSJ>43532.8700231481</SYSJ>
+      <SYPC>17</SYPC>
+      <SYSJ>43544.7594097222</SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
@@ -110,7 +110,7 @@
       <SPMC>卡乐优超轻粘土24色糖果装</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>KLYCQZT24STGZ</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>2658</GGXH>
       <JLDW>盒</JLDW>
       <DJ></DJ>
@@ -122,12 +122,12 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
-      <KYSL>13%</KYSL>
+      <KYSL>16%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>8</SYPC>
-      <SYSJ>43532.8700231481</SYSJ>
+      <SYPC>20</SYPC>
+      <SYSJ>43544.7594097222</SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
@@ -142,7 +142,7 @@
       <SPMC>卡乐优超轻粘土100g补充装红色</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>KLYCQZT100GBCZHS</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>TZ1098</GGXH>
       <JLDW>袋</JLDW>
       <DJ></DJ>
@@ -154,12 +154,12 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
-      <KYSL>13%</KYSL>
+      <KYSL>16%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>6</SYPC>
-      <SYSJ>43532.8700231481</SYSJ>
+      <SYPC>18</SYPC>
+      <SYSJ>43544.7594097222</SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
@@ -174,7 +174,7 @@
       <SPMC>卡乐优超轻粘土100g蓝色补充装</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>KLYCQZT100GLSBCZ</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>TZ1103</GGXH>
       <JLDW>袋</JLDW>
       <DJ></DJ>
@@ -186,12 +186,12 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
-      <KYSL>13%</KYSL>
+      <KYSL>16%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>4</SYPC>
-      <SYSJ>43532.8579282407</SYSJ>
+      <SYPC>16</SYPC>
+      <SYSJ>43544.7594097222</SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
@@ -206,7 +206,7 @@
       <SPMC>卡乐优超轻粘土100g黄色补充装</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>KLYCQZT100GHSBCZ</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>TZ1101</GGXH>
       <JLDW>袋</JLDW>
       <DJ></DJ>
@@ -218,12 +218,12 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
-      <KYSL>13%</KYSL>
+      <KYSL>16%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>6</SYPC>
-      <SYSJ>43532.8700231481</SYSJ>
+      <SYPC>18</SYPC>
+      <SYSJ>43544.7594097222</SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
@@ -238,7 +238,7 @@
       <SPMC>卡乐优超轻粘土24色蓝色收纳盒</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>KLYCQZT24SLSSNH</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>TZ1040</GGXH>
       <JLDW>盒</JLDW>
       <DJ></DJ>
@@ -250,12 +250,12 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
-      <KYSL>13%</KYSL>
+      <KYSL>16%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>8</SYPC>
-      <SYSJ>43532.8700231481</SYSJ>
+      <SYPC>20</SYPC>
+      <SYSJ>43544.7594097222</SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
@@ -270,7 +270,7 @@
       <SPMC>卡乐优8色手指画</SPMC>
       <SPBMJC>玩具</SPBMJC>
       <JM>KLY8SSZH</JM>
-      <ZZSSL>0.16</ZZSSL>
+      <ZZSSL>0.13</ZZSSL>
       <GGXH>TS1020</GGXH>
       <JLDW>盒</JLDW>
       <DJ></DJ>
@@ -282,12 +282,44 @@
       <SM></SM>
       <SLBZ></SLBZ>
       <SYYHBZ>0</SYYHBZ>
+      <KYSL>16%</KYSL>
+      <ZZSTSGL></ZZSTSGL>
+      <GJZ></GJZ>
+      <HZX>0</HZX>
+      <SYPC>18</SYPC>
+      <SYSJ>43544.7594097222</SYSJ>
+      <ZDYBZ>1</ZDYBZ>
+      <XYBZ>1</XYBZ>
+      <KYZT>1</KYZT>
+      <FPLX>0</FPLX>
+      <BB></BB>
+      <YH></YH>
+    </BMXX>
+    <BMXX>
+      <SPBM>107060199000000000001</SPBM>
+      <PID>1070601990000000000</PID>
+      <SCBM>1070601990000000000</SCBM>
+      <SPMC>成人用品震动棒</SPMC>
+      <SPBMJC>塑料制品</SPBMJC>
+      <JM>CRYPZDB</JM>
+      <ZZSSL>0.13</ZZSSL>
+      <GGXH>MZ-F01</GGXH>
+      <JLDW>个</JLDW>
+      <DJ></DJ>
+      <HSBZ>0</HSBZ>
+      <CLLXMC></CLLXMC>
+      <CPXH></CPXH>
+      <SCQYMC></SCQYMC>
+      <CD></CD>
+      <SM></SM>
+      <SLBZ></SLBZ>
+      <SYYHBZ>0</SYYHBZ>
       <KYSL>13%</KYSL>
       <ZZSTSGL></ZZSTSGL>
       <GJZ></GJZ>
       <HZX>0</HZX>
-      <SYPC>6</SYPC>
-      <SYSJ>43532.8700231481</SYSJ>
+      <SYPC>0</SYPC>
+      <SYSJ></SYSJ>
       <ZDYBZ>1</ZDYBZ>
       <XYBZ>1</XYBZ>
       <KYZT>1</KYZT>
