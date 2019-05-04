@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>lr 计算</title>
+    <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="./Data/productCorrespond.js"></script>
+    <style type="text/css">
+        .sty1 {
+            width: 80%;
+            height: 200px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".btn").click(function () {
+                var NProductData = [];
+
+                var oldval = $(".oldData").val();
+                //console.log(oldval);
+                var oldvalArr = $.trim(oldval).split("\n");
+                console.log(oldvalArr.length);
+                for (var i in oldvalArr) {
+                    var item = $.trim(oldvalArr[i]);
+                    var itemArr = item.split("\t");
+                    console.log("item", itemArr.length);
+                    //for (var u in itemArr) {
+                    //console.log("itemarr", itemArr[u]);
+                    //if (itemArr[u].length == 13) {
+                    var u = 11;
+                    var CODE = itemArr[u];
+                    var Title = itemArr[parseInt(u) - 8];
+                    var Count = parseInt(itemArr[parseInt(u) + 7]);
+                    var TotalPrice = parseFloat(itemArr[parseInt(u) + 3]);
+                    var TotalSPrice = Count * parseFloat(productSPirce["P" + CODE]);
+
+                    var NOldIndex = NProductData.findIndex(item => item.CODE == CODE);
+                    if (NOldIndex > -1) {
+                        NProductData[NOldIndex].Count += parseInt(Count);
+                        NProductData[NOldIndex].TotalPrice += parseFloat(TotalPrice);
+                        NProductData[NOldIndex].TotalSPrice += parseFloat(TotalSPrice);
+                    }
+                    else {
+                        NProductData.push({ CODE, Title, Count, TotalPrice, TotalSPrice });
+                    }
+                    //break;
+                    //}
+                    //}
+                }
+
+                console.log("NProductData", NProductData);
+                var output = [
+                    [
+                        "序号",
+                        "CODE",
+                        "标题",
+                        "数量",
+                        "销售总价",
+                        "成本总价",
+                        "毛利"
+                    ]
+                ];
+
+                for (var i in NProductData) {
+                    var Nitem = NProductData[i];
+                    output.push([
+                        parseInt(i) + 1,
+                        Nitem.CODE,
+                        Nitem.Title,
+                        Nitem.Count,
+                        Nitem.TotalPrice.toFixed(2),
+                        Nitem.TotalSPrice.toFixed(2),
+                        (Nitem.TotalPrice - Nitem.TotalSPrice).toFixed(2)
+                    ]);
+                }
+                var coutput = "";
+                for (var q in output) {
+                    for (var w in output[q]) {
+                        coutput += output[q][w] + "\t";
+                    }
+                    coutput += "\n";
+                }
+                $(".newData").val(coutput);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <textarea class="oldData sty1"></textarea>
+    <br /><br />
+    <input type="button" class="btn" value="计 算" />
+    <br /><br />
+    <textarea class="newData sty1"></textarea>
+</body>
+
+</html>
