@@ -82,6 +82,7 @@
 
       $(function() {
         $(".btn").click(function() {
+          var err=[];
           var NProductData = [];
 
           var oldval = $(".oldData").val();
@@ -94,14 +95,15 @@
             console.log("item", itemArr.length);
             for (var u in itemArr) {
               console.log("itemarr", itemArr[u]);
-              if (itemArr[u].length == 13) {
+              //if (itemArr[u].length == 13) {
+              if (parseInt(u) == 2) {
                 var CODE = itemArr[u];
                 var Count = itemArr[parseInt(u) + 3];
                 var TotalPrice = itemArr[parseInt(u) + 5];
 
                 var OOldItem = OProductData.filter(item => item.CODE == CODE);
                 var NOldIndex = NProductData.findIndex(item => item.CODE == CODE);
-                if (OOldItem.length != 1) alert(CODE + "没有找到对应数据");
+                if (OOldItem.length != 1) err.push(CODE + "没有找到对应数据");
                 else if(NOldIndex>-1) {
                   NProductData[NOldIndex].Count +=parseInt( Count);
                   NProductData[NOldIndex].TotalPrice +=parseFloat( TotalPrice);
@@ -114,6 +116,13 @@
                 break;
               }
             }
+          }
+
+          if(err.length>0)
+          {
+            $(".newData").val(err.join("\r\n"));
+            $(".newDataJSON").val('');
+            return;
           }
 
           console.log("NProductData", NProductData);
