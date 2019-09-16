@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <business id="SPBM" comment="商品编码请求" version="1.0">
+
   <body>
     <returnCode>00</returnCode>
     <returnMessage>成功</returnMessage>
@@ -166,7 +167,7 @@
       <BB></BB>
       <YH></YH>
     </BMXX>
-    <GGXH>
+    <BMXX>
       <SPBM>106040806000000000002</SPBM>
       <PID>1060408060000000000</PID>
       <SCBM>1060408060000000000</SCBM>
@@ -519,4 +520,5 @@
       <YH></YH>
     </BMXX>
   </body>
+
 </business>
