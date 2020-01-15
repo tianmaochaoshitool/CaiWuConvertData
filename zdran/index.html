@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>发票清单 数据转换</title>
+    <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+        .sty1 {
+            width: 80%;
+            height: 200px;
+        }
+    </style>
+    <script>
+        $(function() {
+            $(".btn").click(function() {
+                var err = [];
+                var NProductData = [];
+
+                var oldval = $(".oldData").val();
+                console.log(oldval);
+                var oldvalArr = $.trim(oldval).split("\n");
+                console.log(oldvalArr.length);
+                for (var i in oldvalArr) {
+                    var item = $.trim(oldvalArr[i]);
+                    var itemArr = item.split("\t");
+                    console.log("item-", itemArr.length);
+                    for (var u in itemArr) {
+                        //if (itemArr[u].length == 13) {
+                        if (parseInt(u) == 3) {
+                            //console.log("itemarr", itemArr[u]);
+                            var Title = itemArr[0];
+                            console.log("Title", Title);
+                            var CODE = itemArr[u];
+                            console.log("CODE", CODE);
+                            var Count = itemArr[parseInt(u) + 3];
+                            console.log("Count", Count);
+                            var TotalPrice = itemArr[parseInt(u) + 5];
+                            console.log("TotalPrice", TotalPrice);
+                            var ShuiLv = itemArr[parseInt(u) + 6];
+                            console.log("ShuiLv", ShuiLv);
+
+
+                            var NOldIndex = NProductData.findIndex(item => item.CODE == CODE);
+                            if (NOldIndex > -1) {
+                                NProductData[NOldIndex].Count += parseInt(Count);
+                                NProductData[NOldIndex].TotalPrice += parseFloat(parseFloat(TotalPrice).toFixed(2));
+                            } else {
+                                NProductData.push({
+                                    Title,
+                                    CODE,
+                                    Count: parseInt(Count),
+                                    TotalPrice: parseFloat(parseFloat(TotalPrice).toFixed(2)),
+                                    ShuiLv
+                                });
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                // if (err.length > 0) {
+                //     $(".newData").val(err.join("\r\n"));
+                //     // $(".newDataJSON").val('');
+                //     // return;
+                // }
+
+                console.log("NProductData", NProductData);
+                var TotalPrice_ALL = 0;
+                var output = [];
+                for (var i in NProductData) {
+                    var Nitem = NProductData[i];
+                    TotalPrice_ALL += Nitem.TotalPrice;
+                    output.push([
+                        parseInt(i) + 1,
+                        Nitem.Title,
+                        Nitem.CODE,
+                        Nitem.Count,
+                        Nitem.TotalPrice.toFixed(2),
+                        Nitem.ShuiLv,
+                    ]);
+                }
+                var coutput = "";
+                for (var q in output) {
+                    for (var w in output[q]) {
+                        coutput += output[q][w] + "\t";
+                    }
+                    coutput += "\n";
+                }
+
+                coutput += "总金额: " + TotalPrice_ALL.toFixed(2);
+
+                $(".newData").val((err.length > 0 ? err.join("\r\n") + "\r\n\r\n" : "") + coutput);
+                //$(".newDataJSON").val(JSON.stringify(outputJSON));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <textarea class="oldData sty1"></textarea>
+    <br /><br />
+    <input type="button" class="btn" value="转 换" />
+    <br /><br />
+    <textarea class="newData sty1"></textarea>
+    <br /><br />
+    <textarea class="newDataJSON sty1"></textarea>
+</body>
+
+</html>
