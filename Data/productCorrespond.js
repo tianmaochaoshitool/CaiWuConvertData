@@ -25,6 +25,7 @@ var productCorrespond = {
     HAPEGQHCGDYLJM: '6943478021747', //德国hape早教益智男女孩钢琴火车轨道音乐积木生日礼物婴幼儿玩具	
     HAPEJM65LNCXZCB: '6943478016316', //德国hape拼搭拼装积木早教益智65粒农场小镇城堡123岁男女孩玩具	
     KLYZT100GBCZ: '6950164809909', //卡乐优超轻粘土橡皮泥无毒太空水晶彩泥儿童手工di100g大包装套装	
+    HAPESTWJWSCXSL11JT: 'SUIT0079', //德国hape沙滩玩具挖沙铲雪沙漏11件套礼盒袋男女孩儿童礼物工具
 };
 
 var productSPirce = {
@@ -52,4 +53,5 @@ var productSPirce = {
     P6943478021747: 118,
     P6943478016316: 62,
     P6950164809909: 15,
+    PSUIT0079: 0,
 };
