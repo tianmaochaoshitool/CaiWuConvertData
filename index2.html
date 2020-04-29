@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>发票清单 数据转换</title>
+    <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="./Data/productCorrespond2.js"></script>
+    <style type="text/css">
+        .sty1 {
+            width: 80%;
+            height: 200px;
+        }
+    </style>
+    <script>
+        //读取xml
+        function loadXML(path) {
+            var xmlDoc;
+            try {
+                //IE
+                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+            } catch (e) {
+                //firefox,opera
+                xmlDoc = document.implementation.createDocument("", "", null);
+            }
+            try {
+                xmlDoc.asyc = false; //是否异步调用
+                xmlDoc.load(path); //文件路径
+            } catch (e) {
+                //chrome
+                var xmlhttp = new window.XMLHttpRequest();
+                xmlhttp.open("GET", path, false); //创建一个新的http请求，并指定此请求的方法、URL以及验证信息
+                xmlhttp.send();
+                xmlDoc = xmlhttp.responseXML;
+            }
+            return xmlDoc;
+        }
+
+        //读取财务财务软件里面的产品信息
+        var xmlDoc = loadXML("./Data/productCode11-1.xml");
+        var xmlData = xmlDoc
+            .getElementsByTagName("body")[0]
+            .getElementsByTagName("BMXX");
+        //console.log("xmlData", xmlData);
+
+        //装载读取财务财务软件里面的产品
+        var OProductData = [];
+        for (var i = 0; i < xmlData.length; i++) {
+            //PID
+            var PID = xmlData[i].getElementsByTagName("PID")[0].childNodes[0]
+                .nodeValue;
+            //简码
+            var JM = xmlData[i].getElementsByTagName("JM")[0].childNodes[0]
+                .nodeValue;
+            //类目
+            var SPBMJC = xmlData[i].getElementsByTagName("SPBMJC")[0].childNodes[0]
+                .nodeValue;
+            //名称
+            var SPMC = xmlData[i].getElementsByTagName("SPMC")[0].childNodes[0]
+                .nodeValue;
+            //console.log('SPMC', SPMC);
+            //规格型号
+            var GGXH = xmlData[i].getElementsByTagName("GGXH")[0].childNodes[0]
+                .nodeValue;
+            //包装
+            var JLDW = xmlData[i].getElementsByTagName("JLDW")[0].childNodes[0]
+                .nodeValue;
+            //税率
+            var KYSL = xmlData[i]
+                .getElementsByTagName("KYSL")[0]
+                .childNodes[0].nodeValue.replace("%", "");
+            KYSL = parseInt(KYSL) / 100;
+
+            OProductData.push({
+                PID: PID,
+                JM: JM,
+                Barcode: productCorrespond[JM]['Barcode'],
+                GoodsId: productCorrespond[JM]['GoodsId'],
+                SPBMJC: SPBMJC,
+                SPMC: SPMC,
+                GGXH: GGXH,
+                JLDW: JLDW,
+                KYSL: KYSL,
+                Count: 0,
+                TotalPrice: 0
+            });
+        }
+
+        $(function() {
+            $(".btn").click(function() {
+                var err = [];
+                var NProductData = [];
+
+                var oldval = $(".oldData").val();
+                //console.log(oldval);
+                var oldvalArr = $.trim(oldval).split("\n");
+                console.log(oldvalArr.length);
+
+                for (var i in oldvalArr) {
+                    var item = $.trim(oldvalArr[i]);
+                    var itemArr = item.split("\t");
+                    if (itemArr[0] == '收票对象') continue;
+
+                    //23个字段
+                    //console.log("item-", itemArr.length, itemArr[0]);
+
+                    var Type = itemArr[7];
+                    if (Type == '货款' || Type == '票扣') {
+                        var GoodsId = itemArr[15];
+                        var Count = itemArr[18];
+                        var TotalPrice = itemArr[11];
+
+                        var OOldItem = OProductData.filter(item => item.GoodsId == GoodsId);
+                        var NOldIndex = NProductData.findIndex(item => item.GoodsId == GoodsId);
+                        if (OOldItem.length != 1) {
+                            err.push(CODE + " - 没有找到对应数据");
+                        } else if (NOldIndex > -1) {
+                            NProductData[NOldIndex].Count += parseInt(Count);
+                            NProductData[NOldIndex].TotalPrice += parseFloat(TotalPrice);
+                        } else {
+                            OOldItem[0].Count = parseInt(Count);
+                            OOldItem[0].TotalPrice = parseFloat(TotalPrice);
+                            NProductData.push(OOldItem[0]);
+                        }
+                    }
+
+                }
+
+                //return;
+
+                // if (err.length > 0) {
+                //     $(".newData").val(err.join("\r\n"));
+                //     // $(".newDataJSON").val('');
+                //     // return;
+                // }
+
+                console.log("NProductData", NProductData);
+                var output = [
+                    [
+                        "序号",
+                        "货物或应税劳务、服务名称",
+                        "计量单位",
+                        "规格型号",
+                        "数量",
+                        "金额",
+                        "税率",
+                        "商品税目",
+                        "折扣金额",
+                        "税额",
+                        "折扣税额",
+                        "折扣率",
+                        "单价",
+                        "价格方式",
+                        "税收分类编码版本号",
+                        "税收分类编码",
+                        "企业商品编码",
+                        "使用优惠政策标识",
+                        "零税率标识",
+                        "优惠政策说明",
+                        "中外合作油气田标识"
+                    ]
+                ];
+                var outputJSON = [];
+                for (var i in NProductData) {
+                    var Nitem = NProductData[i];
+                    outputJSON.push({
+                        name: Nitem.SPMC,
+                        count: parseInt(Nitem.Count),
+                        TotalPrice: parseFloat(Nitem.TotalPrice)
+                    });
+                    output.push([
+                        parseInt(i) + 1,
+                        /*"*" + Nitem.SPBMJC + "*" +*/
+                        Nitem.SPMC,
+                        Nitem.JLDW,
+                        Nitem.GGXH,
+                        Nitem.Count,
+                        Nitem.TotalPrice,
+                        Nitem.KYSL,
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        1,
+                        "33.0",
+                        Nitem.PID,
+                        Nitem.PID,
+                        0,
+                        "",
+                        "",
+                        0
+                    ]);
+                }
+                var coutput = "";
+                for (var q in output) {
+                    for (var w in output[q]) {
+                        coutput += output[q][w] + "\t";
+                    }
+                    coutput += "\n";
+                }
+
+                $(".newData").val((err.length > 0 ? err.join("\r\n") + "\r\n\r\n" : "") + coutput);
+                $(".newDataJSON").val(JSON.stringify(outputJSON));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <textarea class="oldData sty1"></textarea>
+    <br /><br />
+    <input type="button" class="btn" value="转 换" />
+    <br /><br />
+    <textarea class="newData sty1"></textarea>
+    <br /><br />
+    <textarea class="newDataJSON sty1"></textarea>
+</body>
+
+</html>
