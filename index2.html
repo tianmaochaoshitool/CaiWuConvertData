@@ -84,7 +84,8 @@
                 JLDW: JLDW,
                 KYSL: KYSL,
                 Count: 0,
-                TotalPrice: 0
+                TotalPrice: 0,
+                Price: 0
             });
         }
 
@@ -98,6 +99,9 @@
                 var oldvalArr = $.trim(oldval).split("\n");
                 console.log(oldvalArr.length);
 
+                var huokuan_piaokou = 0;
+                var qita = 0;
+
                 for (var i in oldvalArr) {
                     var item = $.trim(oldvalArr[i]);
                     var itemArr = item.split("\t");
@@ -106,12 +110,13 @@
                     //23个字段
                     //console.log("item-", itemArr.length, itemArr[0]);
 
+                    var GoodsId = itemArr[15];
+                    var Count = itemArr[18];
+                    var TotalPrice = itemArr[11];
                     var Type = itemArr[7];
-                    if (Type == '货款' || Type == '票扣') {
-                        var GoodsId = itemArr[15];
-                        var Count = itemArr[18];
-                        var TotalPrice = itemArr[11];
+                    if (Type == undefined) continue;
 
+                    if (Type == '货款' || Type == '票扣') {
                         var OOldItem = OProductData.filter(item => item.GoodsId == GoodsId);
                         var NOldIndex = NProductData.findIndex(item => item.GoodsId == GoodsId);
                         if (OOldItem.length != 1) {
@@ -124,6 +129,9 @@
                             OOldItem[0].TotalPrice = parseFloat(TotalPrice);
                             NProductData.push(OOldItem[0]);
                         }
+                        huokuan_piaokou += parseFloat(TotalPrice);
+                    } else {
+                        qita += parseFloat(TotalPrice);
                     }
 
                 }
@@ -137,63 +145,106 @@
                 // }
 
                 console.log("NProductData", NProductData);
-                var output = [
-                    [
-                        "序号",
-                        "货物或应税劳务、服务名称",
-                        "计量单位",
-                        "规格型号",
-                        "数量",
-                        "金额",
-                        "税率",
-                        "商品税目",
-                        "折扣金额",
-                        "税额",
-                        "折扣税额",
-                        "折扣率",
-                        "单价",
-                        "价格方式",
-                        "税收分类编码版本号",
-                        "税收分类编码",
-                        "企业商品编码",
-                        "使用优惠政策标识",
-                        "零税率标识",
-                        "优惠政策说明",
-                        "中外合作油气田标识"
-                    ]
+
+                var outputtitle = [
+                    "序号",
+                    "货物或应税劳务、服务名称",
+                    "计量单位",
+                    "规格型号",
+                    "数量",
+                    "金额",
+                    "税率",
+                    "商品税目",
+                    "折扣金额",
+                    "税额",
+                    "折扣税额",
+                    "折扣率",
+                    "单价",
+                    "价格方式",
+                    "税收分类编码版本号",
+                    "税收分类编码",
+                    "企业商品编码",
+                    "使用优惠政策标识",
+                    "零税率标识",
+                    "优惠政策说明",
+                    "中外合作油气田标识"
                 ];
+                var output = [];
                 var outputJSON = [];
+
+                var NNProductData = [];
                 for (var i in NProductData) {
                     var Nitem = NProductData[i];
-                    outputJSON.push({
-                        name: Nitem.SPMC,
-                        count: parseInt(Nitem.Count),
-                        TotalPrice: parseFloat(Nitem.TotalPrice)
-                    });
-                    output.push([
-                        parseInt(i) + 1,
-                        /*"*" + Nitem.SPBMJC + "*" +*/
-                        Nitem.SPMC,
-                        Nitem.JLDW,
-                        Nitem.GGXH,
-                        Nitem.Count,
-                        Nitem.TotalPrice,
-                        Nitem.KYSL,
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        1,
-                        "33.0",
-                        Nitem.PID,
-                        Nitem.PID,
-                        0,
-                        "",
-                        "",
-                        0
-                    ]);
+                    Nitem.Price = Nitem.TotalPrice / Nitem.Count;
+
+                    var JsonData = JSON.stringify(Nitem);
+                    for (var qu = 0; qu < Nitem.Count; qu++) {
+                        var N_Item = JSON.parse(JsonData);
+                        N_Item.Count = 1;
+                        N_Item.TotalPrice = N_Item.Count * N_Item.Price;
+                        NNProductData.push(N_Item);
+                    }
+                }
+                var NNNProductData = [
+                    []
+                ];
+                var NNNPrice = 0;
+                for (var i in NNProductData) {
+                    var Nitem = NNProductData[i];
+                    if (NNNPrice + Nitem.TotalPrice > 100000) {
+                        NNNProductData.push([]);
+                        NNNPrice = 0;
+                    }
+                    var lastIndex = NNNProductData.length - 1;
+                    var NOldIndex = NNNProductData[lastIndex].findIndex(item => item.GoodsId == Nitem.GoodsId);
+                    if (NOldIndex > -1) {
+                        NNNProductData[lastIndex][NOldIndex].Count += Nitem.Count;
+                        NNNProductData[lastIndex][NOldIndex].TotalPrice += Nitem.TotalPrice;
+                    } else {
+                        NNNProductData[lastIndex].push(Nitem);
+                    }
+                    NNNPrice += Nitem.TotalPrice;
+                }
+
+                for (var i in NNNProductData) {
+                    var Narray = NNNProductData[i];
+                    output.push(outputtitle);
+                    for (var u in Narray) {
+                        var Nitem = Narray[u];
+                        outputJSON.push({
+                            name: Nitem.SPMC,
+                            count: parseInt(Nitem.Count),
+                            TotalPrice: parseFloat(Nitem.TotalPrice)
+                        });
+                        output.push([
+                            parseInt(i) + 1,
+                            /*"*" + Nitem.SPBMJC + "*" +*/
+                            Nitem.SPMC,
+                            Nitem.JLDW,
+                            Nitem.GGXH,
+                            Nitem.Count,
+                            Nitem.TotalPrice,
+                            Nitem.KYSL,
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            1,
+                            "33.0",
+                            Nitem.PID,
+                            Nitem.PID,
+                            0,
+                            "",
+                            "",
+                            0
+                        ]);
+                        if ((Narray.length - 1) == u) {
+                            output.push([""]);
+                            output.push([""]);
+                        }
+                    }
                 }
                 var coutput = "";
                 for (var q in output) {
@@ -205,6 +256,7 @@
 
                 $(".newData").val((err.length > 0 ? err.join("\r\n") + "\r\n\r\n" : "") + coutput);
                 $(".newDataJSON").val(JSON.stringify(outputJSON));
+                $(".msg").html("总额:" + (huokuan_piaokou + qita).toFixed(2) + " 货款&票扣:" + huokuan_piaokou.toFixed(2) + " 其他:" + qita.toFixed(2));
             });
         });
     </script>
@@ -216,6 +268,8 @@
     <input type="button" class="btn" value="转 换" />
     <br /><br />
     <textarea class="newData sty1"></textarea>
+    <br />
+    <div class="msg"></div>
     <br /><br />
     <textarea class="newDataJSON sty1"></textarea>
 </body>
