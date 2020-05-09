@@ -32,6 +32,7 @@
 
                     if (node.childNodes[i].nodeName.toLowerCase() == 'ROW'.toLowerCase()) {
                         //console.log(node.childNodes[i].nodeName);
+                        var fp_kehu = this.getAttributeVal(node.childNodes[i].attributes, '客户名称');
                         var fp_number = this.getAttributeVal(node.childNodes[i].attributes, '发票号码');
                         var fp_daima = this.getAttributeVal(node.childNodes[i].attributes, '发票代码');
                         var fp_leixing = this.getAttributeVal(node.childNodes[i].attributes, '发票类型');
@@ -41,6 +42,7 @@
                         var fp_date = this.getAttributeVal(node.childNodes[i].attributes, '开票日期');
                         if (result.findIndex(t => t.fp_number == fp_number) < 0)
                             result.push({
+                                fp_kehu: fp_kehu,
                                 fp_number: fp_number,
                                 fp_daima: fp_daima,
                                 fp_leixing: fp_leixing,
@@ -112,7 +114,7 @@
                     var Nitem = jsonData[i];
 
                     output.push([
-                        "浙江天猫供应链管理有限公司",
+                        Nitem.fp_kehu,
                         "四川灰犀牛科技有限公司",
                         '100072026',
                         Nitem.fp_number,

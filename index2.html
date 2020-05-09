@@ -112,15 +112,20 @@
 
                     var GoodsId = itemArr[15];
                     var Count = itemArr[18];
+                    if (isNaN(Count) || Count == NaN || Count == '') Count = 0;
                     var TotalPrice = itemArr[11];
                     var Type = itemArr[7];
+
+                    console.log(GoodsId, Count, TotalPrice, Type);
+
                     if (Type == undefined) continue;
+                    if (TotalPrice == 0) continue;
 
                     if (Type == '货款' || Type == '票扣') {
                         var OOldItem = OProductData.filter(item => item.GoodsId == GoodsId);
                         var NOldIndex = NProductData.findIndex(item => item.GoodsId == GoodsId);
                         if (OOldItem.length != 1) {
-                            err.push(CODE + " - 没有找到对应数据");
+                            err.push(GoodsId + " - 没有找到对应数据");
                         } else if (NOldIndex > -1) {
                             NProductData[NOldIndex].Count += parseInt(Count);
                             NProductData[NOldIndex].TotalPrice += parseFloat(TotalPrice);
@@ -138,11 +143,11 @@
 
                 //return;
 
-                // if (err.length > 0) {
-                //     $(".newData").val(err.join("\r\n"));
-                //     // $(".newDataJSON").val('');
-                //     // return;
-                // }
+                if (err.length > 0) {
+                    $(".newData").val(err.join("\r\n"));
+                    // $(".newDataJSON").val('');
+                    // return;
+                }
 
                 console.log("NProductData", NProductData);
 
@@ -188,6 +193,8 @@
                 var NNNProductData = [
                     []
                 ];
+                console.log("NNNProductData", NNNProductData);
+
                 var NNNPrice = 0;
                 for (var i in NNProductData) {
                     var Nitem = NNProductData[i];
