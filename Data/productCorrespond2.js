@@ -27,7 +27,7 @@ var productCorrespond = {
     HAPEJM65LNCXZCB: { Barcode: '6943478016316', Code: '612225456413', GoodsId: '612499265257' }, //德国hape拼搭拼装积木早教益智65粒农场小镇城堡123岁男女孩玩具	
     KLYZT100GBCZ: { Barcode: '6950164809909', Code: '612931233625', GoodsId: '612931221970' }, //卡乐优超轻粘土橡皮泥无毒太空水晶彩泥儿童手工di100g大包装套装	
     HAPESTWJWSCXSL11JT: { Barcode: 'suit00265', Code: '613591826949', GoodsId: '613073500565' }, //德国hape沙滩玩具挖沙铲雪沙漏11件套礼盒袋男女孩儿童礼物工具
-    KLYCQZT8SDGGBCZ: { Barcode: '6943478030725', Code: '617835886848', GoodsId: '616703183359' }, //德国hape童车儿童滑板车三合一1-6岁宝宝可坐溜溜车小孩平衡车
+    KLYCQZT8SDGGBCZ: { Barcode: '6943478030725', Code: '617835886848', GoodsId: '617578549947' }, //德国hape童车儿童滑板车三合一1-6岁宝宝可坐溜溜车小孩平衡车
 };
 
 var productSPirce = {

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<business id="SPBM" comment="商品编码请求" version="1.0">
+  
+  <body>
+    <returnCode>00</returnCode>
+    <returnMessage>成功</returnMessage>
+    <BBH>33.0</BBH>
+    <COUNT>17</COUNT>
+    <MWJY>000000001</MWJY>
+   
+       <BMXX>
+      <SPBM>103010501040000000001</SPBM>
+      <PID>1030105010400000000</PID>
+      <SCBM>1030105010400000000</SCBM>
+      <SPMC>Melrose天然初榨椰子油</SPMC>
+      <SPBMJC>植物油</SPBMJC>
+      <JM>MELROSETRCZYZY</JM>
+      <ZZSSL>0.09</ZZSSL>
+      <GGXH>300g</GGXH>
+      <JLDW>瓶</JLDW>
+      <DJ></DJ>
+      <HSBZ>0</HSBZ>
+      <CLLXMC></CLLXMC>
+      <CPXH></CPXH>
+      <SCQYMC></SCQYMC>
+      <CD></CD>
+      <SM></SM>
+      <SLBZ></SLBZ>
+      <SYYHBZ>0</SYYHBZ>
+      <KYSL>9%</KYSL>
+      <ZZSTSGL></ZZSTSGL>
+      <GJZ></GJZ>
+      <HZX>0</HZX>
+      <SYPC>22</SYPC>
+      <SYSJ>43945.5104166667</SYSJ>
+      <ZDYBZ>1</ZDYBZ>
+      <XYBZ>1</XYBZ>
+      <KYZT>1</KYZT>
+      <FPLX>0</FPLX>
+      <BB></BB>
+      <YH></YH>
+    </BMXX>
+    <BMXX>
+      <SPBM>107022302000000000001</SPBM>
+      <PID>1070223020000000000</PID>
+      <SCBM>1070223020000000000</SCBM>
+      <SPMC>身体磨砂膏</SPMC>
+      <SPBMJC>美容护肤品</SPBMJC>
+      <JM>STMSG</JM>
+      <ZZSSL>0.13</ZZSSL>
+      <GGXH>220g</GGXH>
+      <JLDW>包</JLDW>
+      <DJ></DJ>
+      <HSBZ>0</HSBZ>
+      <CLLXMC></CLLXMC>
+      <CPXH></CPXH>
+      <SCQYMC></SCQYMC>
+      <CD></CD>
+      <SM></SM>
+      <SLBZ></SLBZ>
+      <SYYHBZ>0</SYYHBZ>
+      <KYSL>13%</KYSL>
+      <ZZSTSGL></ZZSTSGL>
+      <GJZ></GJZ>
+      <HZX>0</HZX>
+      <SYPC>25</SYPC>
+      <SYSJ>43945.5097569444</SYSJ>
+      <ZDYBZ>1</ZDYBZ>
+      <XYBZ>1</XYBZ>
+      <KYZT>1</KYZT>
+      <FPLX>0</FPLX>
+      <BB></BB>
+      <YH></YH>
+    </BMXX>
+
+  </body>
+</business>
