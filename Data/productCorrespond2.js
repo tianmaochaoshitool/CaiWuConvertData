@@ -27,7 +27,10 @@ var productCorrespond = {
     HAPEJM65LNCXZCB: { Barcode: '6943478016316', Code: '612225456413', GoodsId: '612499265257' }, //德国hape拼搭拼装积木早教益智65粒农场小镇城堡123岁男女孩玩具	
     KLYZT100GBCZ: { Barcode: '6950164809909', Code: '612931233625', GoodsId: '612931221970' }, //卡乐优超轻粘土橡皮泥无毒太空水晶彩泥儿童手工di100g大包装套装	
     HAPESTWJWSCXSL11JT: { Barcode: 'suit00265', Code: '613591826949', GoodsId: '613073500565' }, //德国hape沙滩玩具挖沙铲雪沙漏11件套礼盒袋男女孩儿童礼物工具
-    KLYCQZT8SDGGBCZ: { Barcode: '6943478030725', Code: '617835886848', GoodsId: '617578549947' }, //德国hape童车儿童滑板车三合一1-6岁宝宝可坐溜溜车小孩平衡车
+    HAPETCETHBCSHY: { Barcode: '6943478030725', Code: '617835886848', GoodsId: '617578549947' }, //德国hape童车儿童滑板车三合一1-6岁宝宝可坐溜溜车小孩平衡车
+    HAPEHSSLWSXZWJ: { Barcode: '20200428', Code: '617360114905', GoodsId: '617617663153' }, //德国hape花式水漏玩水洗澡玩具123宝宝男女孩戏水婴幼洗澡玩具
+    KLYCQZT8SDGGBCZ: { Barcode: '6950164804867', Code: '616193777169', GoodsId: '616703183359' }, //卡乐优超轻粘土8色大规格补充装彩泥橡皮泥黏土diy手工制作大包装
+    HAPEETXZYYEBBYSXSWJ: { Barcode: 'suit00266', Code: '617191146259', GoodsId: '617191670402' }, //德国hape儿童洗澡婴幼儿宝宝浴室戏水玩具泰迪鲸鱼男女孩玩偶套装
 };
 
 var productSPirce = {
