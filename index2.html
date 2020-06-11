@@ -183,9 +183,9 @@
                     Nitem.Price = Nitem.TotalPrice / Nitem.Count;
 
                     var JsonData = JSON.stringify(Nitem);
-                    for (var qu = 0; qu < Nitem.Count; qu++) {
+                    for (var qu = 0; qu < Math.abs(Nitem.Count); qu++) {
                         var N_Item = JSON.parse(JsonData);
-                        N_Item.Count = 1;
+                        N_Item.Count = Nitem.Count < 0 ? -1 : 1;
                         N_Item.TotalPrice = N_Item.Count * N_Item.Price;
                         NNProductData.push(N_Item);
                     }
