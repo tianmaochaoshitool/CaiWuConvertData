@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>lr 计算</title>
     <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="./Data/productCorrespond.js"></script>
+    <script src="./Data/productCorrespond2.js"></script>
     <style type="text/css">
         .sty1 {
             width: 80%;
@@ -15,8 +15,82 @@
         }
     </style>
     <script>
-        $(function () {
-            $(".btn").click(function () {
+        //读取xml
+        function loadXML(path) {
+            var xmlDoc;
+            try {
+                //IE
+                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+            } catch (e) {
+                //firefox,opera
+                xmlDoc = document.implementation.createDocument("", "", null);
+            }
+            try {
+                xmlDoc.asyc = false; //是否异步调用
+                xmlDoc.load(path); //文件路径
+            } catch (e) {
+                //chrome
+                var xmlhttp = new window.XMLHttpRequest();
+                xmlhttp.open("GET", path, false); //创建一个新的http请求，并指定此请求的方法、URL以及验证信息
+                xmlhttp.send();
+                xmlDoc = xmlhttp.responseXML;
+            }
+            return xmlDoc;
+        }
+
+        //读取财务财务软件里面的产品信息
+        var xmlDoc = loadXML("./Data/productCode11-1.xml");
+        var xmlData = xmlDoc
+            .getElementsByTagName("body")[0]
+            .getElementsByTagName("BMXX");
+        //console.log("xmlData", xmlData);
+
+        //装载读取财务财务软件里面的产品
+        var OProductData = [];
+        for (var i = 0; i < xmlData.length; i++) {
+            //PID
+            var PID = xmlData[i].getElementsByTagName("PID")[0].childNodes[0]
+                .nodeValue;
+            //简码
+            var JM = xmlData[i].getElementsByTagName("JM")[0].childNodes[0]
+                .nodeValue;
+            //类目
+            var SPBMJC = xmlData[i].getElementsByTagName("SPBMJC")[0].childNodes[0]
+                .nodeValue;
+            //名称
+            var SPMC = xmlData[i].getElementsByTagName("SPMC")[0].childNodes[0]
+                .nodeValue;
+            //console.log('SPMC', SPMC);
+            //规格型号
+            var GGXH = xmlData[i].getElementsByTagName("GGXH")[0].childNodes[0]
+                .nodeValue;
+            //包装
+            var JLDW = xmlData[i].getElementsByTagName("JLDW")[0].childNodes[0]
+                .nodeValue;
+            //税率
+            var KYSL = xmlData[i]
+                .getElementsByTagName("KYSL")[0]
+                .childNodes[0].nodeValue.replace("%", "");
+            KYSL = parseInt(KYSL) / 100;
+
+            OProductData.push({
+                PID: PID,
+                JM: JM,
+                Barcode: productCorrespond[JM]['Barcode'],
+                GoodsId: productCorrespond[JM]['GoodsId'],
+                SPBMJC: SPBMJC,
+                SPMC: SPMC,
+                GGXH: GGXH,
+                JLDW: JLDW,
+                KYSL: KYSL,
+                Count: 0,
+                TotalPrice: 0,
+                Price: 0
+            });
+        }
+
+        $(function() {
+            $(".btn").click(function() {
                 var NProductData = [];
 
                 var oldval = $(".oldData").val();
@@ -30,11 +104,21 @@
                     //for (var u in itemArr) {
                     //console.log("itemarr", itemArr[u]);
                     //if (itemArr[u].length == 13) {
-                    var u = 11;
-                    var CODE = itemArr[u];
-                    var Title = itemArr[parseInt(u) - 8];
-                    var Count = parseInt(itemArr[parseInt(u) + 7]);
-                    var TotalPrice = parseFloat(itemArr[parseInt(u) + 3]);
+                    var u = 12;
+
+                    var GoodsID = itemArr[u];
+                    var Title = itemArr[parseInt(u) + 2];
+                    var Count = parseInt(itemArr[parseInt(u) + 3]);
+
+                    var CODE = "";
+                    for (var y in OProductData) {
+                        if (OProductData[y].GoodsId === GoodsID) {
+                            CODE = OProductData[y].Barcode;
+                        }
+
+                    }
+
+                    var TotalPrice = parseFloat(itemArr[parseInt(u) + 4]);
                     var TotalSPrice = Count * parseFloat(productSPirce["P" + CODE]);
 
                     var NOldIndex = NProductData.findIndex(item => item.CODE == CODE);
@@ -42,9 +126,14 @@
                         NProductData[NOldIndex].Count += parseInt(Count);
                         NProductData[NOldIndex].TotalPrice += parseFloat(TotalPrice);
                         NProductData[NOldIndex].TotalSPrice += parseFloat(TotalSPrice);
-                    }
-                    else {
-                        NProductData.push({ CODE, Title, Count, TotalPrice, TotalSPrice });
+                    } else {
+                        NProductData.push({
+                            CODE,
+                            Title,
+                            Count,
+                            TotalPrice,
+                            TotalSPrice
+                        });
                     }
                     //break;
                     //}
