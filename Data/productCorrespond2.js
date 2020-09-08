@@ -32,6 +32,9 @@ var productCorrespond = {
     KLYCQZT8SDGGBCZ: { Barcode: '6950164804867', Code: '616193777169', GoodsId: '616703183359' }, //卡乐优超轻粘土8色大规格补充装彩泥橡皮泥黏土diy手工制作大包装
     HAPEETXZYYEBBYSXSWJ: { Barcode: 'suit00266', Code: '617191146259', GoodsId: '617191670402' }, //德国hape儿童洗澡婴幼儿宝宝浴室戏水玩具泰迪鲸鱼男女孩玩偶套装
     HAPEETETDDLJMPHWJ: { Barcode: '6943478030879', Code: '619592978104', GoodsId: '619593522436' }, //德国hape儿童儿童叠叠乐积木平衡玩具男女孩早教益智亲子互动礼物
+    HAPEGXHLC: { Barcode: '6943478025318', Code: '624883599304', GoodsId: '624005216241' }, //德国惯性回力车滑行车儿童益智男女孩发条木制模型玩具
+    LFCQZTCNKLZT: { Barcode: '6939219081576', Code: '624677134176', GoodsId: '624082984994' }, //罗弗超轻粘土彩泥无毒恐龙主题玩具diy手办工黏土儿童益智套装
+
 };
 
 var productSPirce = {
@@ -65,4 +68,6 @@ var productSPirce = {
     P6950164804867: 23,
     Psuit00266: 58,
     P6943478030879: 0,
+    P6943478025318:0,
+    P6939219081576:0,
 };
