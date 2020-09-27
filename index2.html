@@ -89,8 +89,8 @@
             });
         }
 
-        $(function() {
-            $(".btn").click(function() {
+        $(function () {
+            $(".btn").click(function () {
                 var err = [];
                 var NProductData = [];
 
@@ -110,11 +110,13 @@
                     //23个字段
                     //console.log("item-", itemArr.length, itemArr[0]);
 
-                    var GoodsId = itemArr[16];
-                    var Count = itemArr[19];
+                    var GoodsIdIndex = 17;
+
+                    var GoodsId = itemArr[GoodsIdIndex];
+                    var Count = itemArr[GoodsIdIndex + 3];
                     if (isNaN(Count) || Count == NaN || Count == '') Count = 0;
-                    var TotalPrice = itemArr[12];
-                    var Type = itemArr[7];
+                    var TotalPrice = itemArr[GoodsIdIndex - 4];
+                    var Type = itemArr[GoodsIdIndex - 9];
 
                     console.log(GoodsId, Count, TotalPrice, Type);
 
@@ -203,7 +205,8 @@
                         NNNPrice = 0;
                     }
                     var lastIndex = NNNProductData.length - 1;
-                    var NOldIndex = NNNProductData[lastIndex].findIndex(item => item.GoodsId == Nitem.GoodsId);
+                    var NOldIndex = NNNProductData[lastIndex].findIndex(item => item.GoodsId == Nitem
+                        .GoodsId);
                     if (NOldIndex > -1) {
                         NNNProductData[lastIndex][NOldIndex].Count += Nitem.Count;
                         NNNProductData[lastIndex][NOldIndex].TotalPrice += Nitem.TotalPrice;
@@ -263,7 +266,8 @@
 
                 $(".newData").val((err.length > 0 ? err.join("\r\n") + "\r\n\r\n" : "") + coutput);
                 $(".newDataJSON").val(JSON.stringify(outputJSON));
-                $(".msg").html("总额:" + (huokuan_piaokou + qita).toFixed(2) + " 货款&票扣:" + huokuan_piaokou.toFixed(2) + " 其他:" + qita.toFixed(2));
+                $(".msg").html("总额:" + (huokuan_piaokou + qita).toFixed(2) + " 货款&票扣:" + huokuan_piaokou
+                    .toFixed(2) + " 其他:" + qita.toFixed(2));
             });
         });
     </script>
