@@ -39,6 +39,8 @@ var productCorrespond = {
     LFCQZTDIYSBGNTETYZTZ: { Barcode: '6939219070501', Code: '624324857591', GoodsId: '624325737577' }, //罗弗超轻粘土橡皮泥无毒彩泥儿童粘土diy手办工黏土儿童益智套装
     LFCQZTTPWZTYZBSL: { Barcode: '6939219011245', Code: '624083272806', GoodsId: '624394761288' }, //罗弗超轻粘土手工diy无毒彩橡皮泥儿童粘土甜品屋主题益智伴手礼
 
+    KLYTKSWDMLSC: { Barcode: '6950164809251', Code: '625889565440', GoodsId: '626179706056' }, //卡乐优太空沙儿童安全无毒魔力沙彩沙室内女孩桌子沙子套装玩具
+
 };
 
 var productSPirce = {
@@ -77,4 +79,5 @@ var productSPirce = {
     P6950164805383:0,
     P6939219070501:0,
     P6939219011245:0,
+    P6950164809251:0,
 };
