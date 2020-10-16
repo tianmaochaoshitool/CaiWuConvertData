@@ -41,6 +41,7 @@ var productCorrespond = {
 
     KLYTKSWDMLSC: { Barcode: '6950164809251', Code: '625889565440', GoodsId: '626179706056' }, //卡乐优太空沙儿童安全无毒魔力沙彩沙室内女孩桌子沙子套装玩具
 
+    HAPE13JETWJDZXGQ: { Barcode: '694347803037', Code: '624697770282', GoodsId: '624103580452' }, //德国Hape13键小儿童钢琴玩具电子可弹奏男女孩电子琴木制益智玩具
 };
 
 var productSPirce = {
@@ -80,4 +81,5 @@ var productSPirce = {
     P6939219070501:0,
     P6939219011245:0,
     P6950164809251:0,
+    P694347803037:0,
 };
