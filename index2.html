@@ -112,13 +112,13 @@
                     //23个字段
                     //console.log("item-", itemArr.length, itemArr[0]);
 
-                    var GoodsIdIndex = 18;
+                    var GoodsIdIndex = 19;
 
                     var GoodsId = itemArr[GoodsIdIndex];
                     var Count = itemArr[GoodsIdIndex + 3];
                     if (isNaN(Count) || Count == NaN || Count == '') Count = 0;
-                    var TotalPrice = itemArr[GoodsIdIndex - 4];
-                    var Type = itemArr[GoodsIdIndex - 9];
+                    var TotalPrice = itemArr[GoodsIdIndex - 5];
+                    var Type = itemArr[GoodsIdIndex - 10];
 
                     console.log(GoodsId, Count, TotalPrice, Type);
 
