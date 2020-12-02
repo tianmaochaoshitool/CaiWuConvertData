@@ -56,7 +56,7 @@
             var JM = xmlData[i].getAttribute('JM');
             //类目
             //var SPBMJC = xmlData[i].getElementsByTagName("SPBMJC")[0].childNodes[0].nodeValue;
-            var SPBMJC = '';// xmlData[i].getAttribute('SPFLBM');
+            var SPBMJC = ''; // xmlData[i].getAttribute('SPFLBM');
             //名称
             //var SPMC = xmlData[i].getElementsByTagName("SPMC")[0].childNodes[0].nodeValue;
             var SPMC = xmlData[i].getAttribute('MC');
@@ -72,7 +72,7 @@
 
             var KYSL = xmlData[i].getAttribute('SL');
 
-            
+
             console.log(`JM:${JM}   NAME:${SPMC}`);
 
             OProductData.push({
@@ -182,18 +182,29 @@
                 var outputJSON = [];
 
                 var NNProductData = [];
+                var checkTatalPriceALL = 0;
                 for (var i in NProductData) {
                     var Nitem = NProductData[i];
+                    if (Nitem.Count == 0) alert('Count == 0 #' + Nitem.SPMC);
                     Nitem.Price = Nitem.TotalPrice / Nitem.Count;
 
                     var JsonData = JSON.stringify(Nitem);
+                    var checkTatalPrice = 0;
                     for (var qu = 0; qu < Math.abs(Nitem.Count); qu++) {
                         var N_Item = JSON.parse(JsonData);
                         N_Item.Count = Nitem.Count < 0 ? -1 : 1;
                         N_Item.TotalPrice = N_Item.Count * N_Item.Price;
                         NNProductData.push(N_Item);
+                        checkTatalPrice += N_Item.TotalPrice;
                     }
+
+                    if (checkTatalPrice != Nitem.TotalPrice)
+                        console.error('金额不相符', checkTatalPrice, Nitem.TotalPrice, Nitem);
+                    checkTatalPriceALL += checkTatalPrice;
                 }
+                if (checkTatalPriceALL != huokuan_piaokou)
+                    console.error('金额不相符0', checkTatalPriceALL, huokuan_piaokou);
+
                 var NNNProductData = [
                     []
                 ];
