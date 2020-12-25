@@ -55,6 +55,8 @@ var productCorrespond = {
 
     LFCQZTSESXZT: { Barcode: '6939219070181', Code: '631366620833', GoodsId: '632329435518' }, //罗弗超轻粘土无毒儿童手工黏土diy材料包十二生肖主题礼盒套装
     LFCQZTXX18S: { Barcode: '6939219070334', Code: '632231346660', GoodsId: '631922933757' }, //罗弗超轻粘土小熊18色儿童幼儿园宝宝diy创意手工无毒橡皮泥礼盒
+
+    HAPEYZPCPDJMETSDLW20LJZ: { Barcode: '6943478020016', Code: '633525263279', GoodsId: '632548904082' }, //德国Hape益智拼插拼搭积木儿童圣诞礼物20粒建筑123岁
     
     
 };
