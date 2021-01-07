@@ -57,6 +57,8 @@ var productCorrespond = {
     LFCQZTXX18S: { Barcode: '6939219070334', Code: '632231346660', GoodsId: '631922933757' }, //罗弗超轻粘土小熊18色儿童幼儿园宝宝diy创意手工无毒橡皮泥礼盒
 
     HAPEYZPCPDJMETSDLW20LJZ: { Barcode: '6943478020016', Code: '633525263279', GoodsId: '632548904082' }, //德国Hape益智拼插拼搭积木儿童圣诞礼物20粒建筑123岁
+
+    KLYCQZTETWJ24SCNDIY: { Barcode: '6950164804478', Code: '634646018470', GoodsId: '634329309691' }, //卡乐优超轻粘土儿童玩具24色彩泥diy手工橡皮泥宝宝小孩黏土送礼
     
     
 };
