@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>处理开票软件导出数据到猫超</title>
+    <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+        .sty1 {
+            width: 80%;
+            height: 200px;
+        }
+    </style>
+    <script>
+        var num = 0;
+        var parseXMLJSON = {
+            parse2json: function(xmlStr) {
+                var root = document.createElement('XMLROOT');
+                //console.log(xmlStr);
+                root.innerHTML = xmlStr;
+                return this.parse(root);
+            },
+            parse: function(node) {
+                num++;
+                if (num > 100) return [];
+                var result = [];
+                for (var i = 0; i < node.childNodes.length; ++i) {
+                    console.log(node.childNodes[i].nodeType);
+                    console.log(node.childNodes[i].nodeName);
+
+                    if (node.childNodes[i].nodeName.toLowerCase() == 'ROW'.toLowerCase()) {
+                        //console.log(node.childNodes[i].nodeName);
+                        var fp_kehu = this.getAttributeVal(node.childNodes[i].attributes, '客户名称');
+                        var fp_number = this.getAttributeVal(node.childNodes[i].attributes, '发票号码');
+                        var fp_daima = this.getAttributeVal(node.childNodes[i].attributes, '发票代码');
+                        var fp_leixing = this.getAttributeVal(node.childNodes[i].attributes, '发票类型');
+                        var fp_shuie = this.getAttributeVal(node.childNodes[i].attributes, '税额');
+                        var fp_jine = this.getAttributeVal(node.childNodes[i].attributes, '合计金额');
+                        var fp_hejijine = this.getAttributeVal(node.childNodes[i].attributes, '价税合计');
+                        var fp_date = this.getAttributeVal(node.childNodes[i].attributes, '开票日期');
+                        if (result.findIndex(t => t.fp_number == fp_number) < 0)
+                            result.push({
+                                fp_kehu: fp_kehu,
+                                fp_number: fp_number,
+                                fp_daima: fp_daima,
+                                fp_leixing: fp_leixing,
+                                fp_shuie: fp_shuie,
+                                fp_jine: fp_jine,
+                                fp_hejijine: fp_hejijine,
+                                fp_date: fp_date,
+                            });
+                    }
+
+                    if (node.childNodes[i].nodeType == 1) {
+                        var results = this.parse(node.childNodes[i]);
+                        for (var i in results) {
+                            if (result.findIndex(t => t.fp_number == results[i].fp_number) < 0)
+                                result.push(results[i]);
+                        }
+                    }
+                }
+                return result;
+            },
+            getAttributeVal: function(attributes, attName) {
+                var att = attributes.getNamedItem(attName);
+                return att.value;
+            },
+            parse2xml: function(data) {
+                var xmldata = '';
+                for (var i in data) {
+                    xmldata += '<' + i + '>';
+                    if (typeof data[i] == 'object') {
+                        xmldata += this.parse2xml(data[i]);
+                    } else {
+                        xmldata += data[i];
+                    }
+                    xmldata += '</' + i + '>';
+                }
+                return xmldata;
+            }
+        };
+        $(function() {
+
+            $(".btn").click(function() {
+                num = 0;
+                var val = $(".oldData").val();
+
+                var jsonData = parseXMLJSON.parse2json(val);
+
+                console.log(jsonData);
+
+
+                var outputtitle = [
+                    "公司主体",
+                    "供应商公司名称",
+                    "一级供应商编码",
+                    "发票号码",
+                    "发票类型",
+                    "开票日期",
+                    "币种",
+                    "税率",
+                    "未税金额",
+                    "税额",
+                    "含税金额",
+                    "发票代码",
+                ];
+                var output = [];
+                output.push(outputtitle);
+
+                for (var i in jsonData) {
+
+                    var Nitem = jsonData[i];
+
+                    output.push([
+                        Nitem.fp_kehu,
+                        "上海童艺电子商务有限公司",
+                        '100139123',
+                        Nitem.fp_number,
+                        Nitem.fp_leixing == '增值税专票' ? '增值税专用发票' : Nitem.fp_leixing,
+                        Nitem.fp_date,
+                        "CNY",
+                        0.13,
+                        Nitem.fp_jine,
+                        Nitem.fp_shuie,
+                        Nitem.fp_hejijine,
+                        Nitem.fp_daima,
+                    ]);
+
+
+                }
+
+                var coutput = "";
+                for (var q in output) {
+                    for (var w in output[q]) {
+                        coutput += output[q][w] + "\t";
+                    }
+                    coutput += "\n";
+                }
+
+                $(".newData").val(coutput);
+
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <textarea class="oldData sty1"></textarea>
+    <br /><br />
+    <input type="button" class="btn" value="转 换" />
+    <br /><br />
+    <textarea class="newData sty1"></textarea>
+</body>
+
+</html>
