@@ -61,6 +61,9 @@ var productCorrespond = {
     KLYCQZTETWJ24SCNDIY: { Barcode: '6950164804478', Code: '634646018470', GoodsId: '634329309691' }, //卡乐优超轻粘土儿童玩具24色彩泥diy手工橡皮泥宝宝小孩黏土送礼
 
     LFCQNTCJFX: { Barcode: '6939219062193', Code: '635313519100', GoodsId: '634317824455' }, //薇娅推荐罗弗超轻黏土超级飞侠12盒*30g儿童彩泥黏土手工diy材料
+
+    HAPEYZJMMZPTPCPDWJ: { Barcode: '2405952800049', Code: '634222544822', GoodsId: '634230560250' }, //Hape益智积木木质拼图拼插配对玩具1~3岁宝宝时间认知儿童早教
+    HAPEYZRJFDJMKKYYYEYJ: { Barcode: '6943478018549', Code: '634346421158', GoodsId: '634664306850' }, //德国Hape益智软胶浮雕积木可啃咬婴幼儿牙胶6面早教
     
     
 };
