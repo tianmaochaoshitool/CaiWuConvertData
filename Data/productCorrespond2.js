@@ -66,6 +66,8 @@ var productCorrespond = {
     HAPEYZRJFDJMKKYYYEYJ: { Barcode: '6943478018549', Code: '634346421158', GoodsId: '634664306850' }, //德国Hape益智软胶浮雕积木可啃咬婴幼儿牙胶6面早教
 
     LFCQNTMCXFDQLK1230GETCN: { Barcode: '6939219011313', Code: '636340343557', GoodsId: '635336108484' }, //罗弗超轻黏土萌宠小分队巧乐卡12*30g儿童彩泥黏土手工diy材料
+
+    DGHAPECSCZJM: { Barcode: '6943478031012', Code: '638403763295', GoodsId: '637257616452' }, //德国hape穿绳串珠积木儿童益智珠子丛林火车幼儿1-2-3-4-5岁玩具 1盒
     
     
 };
