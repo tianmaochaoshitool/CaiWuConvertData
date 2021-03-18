@@ -69,6 +69,7 @@ var productCorrespond = {
 
     DGHAPECSCZJM: { Barcode: '6943478031012', Code: '638403763295', GoodsId: '637257616452' }, //德国hape穿绳串珠积木儿童益智珠子丛林火车幼儿1-2-3-4-5岁玩具 1盒
     
+    KLYTKSNHNHETWJYYESTCNDIY:{Barcode: '6950164806038', Code: '638289215575', GoodsId: '637949070531' }, //卡乐优太空沙男孩女孩儿童玩具婴幼儿沙滩彩泥diy 1袋
     
 };
 
