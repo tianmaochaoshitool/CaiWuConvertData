@@ -72,6 +72,8 @@ var productCorrespond = {
     KLYTKSNHNHETWJYYESTCNDIY:{Barcode: '6950164806038', Code: '638289215575', GoodsId: '637949070531' }, //卡乐优太空沙男孩女孩儿童玩具婴幼儿沙滩彩泥diy 1袋
 
     HAPEDDQDDLQWYHDTCHTQ:{Barcode: '6943478024953', Code: '638055852830', GoodsId: '638690866861' }, //Hape叠叠圈堆堆乐青蛙圆环堆塔彩虹套圈宝宝不倒翁益智儿童玩具 1套
+
+    HAPECXXPSTXZWJ:{Barcode: 'SUIT003509', Code: '639761123728', GoodsId: '638686046789' }, //hape春夏新品沙滩洗澡玩具2-3-4-5-6-7-8岁儿童沙漏组套男孩礼物 1套
     
 };
 
