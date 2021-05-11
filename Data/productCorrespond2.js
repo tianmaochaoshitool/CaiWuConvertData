@@ -74,6 +74,8 @@ var productCorrespond = {
     HAPEDDQDDLQWYHDTCHTQ:{Barcode: '6943478024953', Code: '638055852830', GoodsId: '638690866861' }, //Hape叠叠圈堆堆乐青蛙圆环堆塔彩虹套圈宝宝不倒翁益智儿童玩具 1套
 
     HAPECXXPSTXZWJ:{Barcode: 'SUIT003509', Code: '639761123728', GoodsId: '638686046789' }, //hape春夏新品沙滩洗澡玩具2-3-4-5-6-7-8岁儿童沙漏组套男孩礼物 1套
+
+    HAPEYLHTHYMYMKF:{Barcode: '6943478019027', Code: '640494432413', GoodsId: '640875886478' }, //Hape音乐话筒回音鸣音麦克风儿童唱歌玩具 1个
     
 };
 
