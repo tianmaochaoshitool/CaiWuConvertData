@@ -76,6 +76,11 @@ var productCorrespond = {
     HAPECXXPSTXZWJ:{Barcode: 'SUIT003509', Code: '639761123728', GoodsId: '638686046789' }, //hape春夏新品沙滩洗澡玩具2-3-4-5-6-7-8岁儿童沙漏组套男孩礼物 1套
 
     HAPEYLHTHYMYMKF:{Barcode: '6943478019027', Code: '640494432413', GoodsId: '640875886478' }, //Hape音乐话筒回音鸣音麦克风儿童唱歌玩具 1个
+
+    KLYDIYGJJSNSTWJSZSP:{Barcode: '6950164809565', Code: '642267728842', GoodsId: '642634665072' }, // 卡乐优diy过家家室内沙滩玩具沙子沙盘4斤彩沙套装太空沙六一礼物
+    HAPEWHYYXHRZBBXCZQQYL:{Barcode: '6943478019270', Code: '641919784536', GoodsId: '641897940039' }, // Hape五合一游戏盒绕珠百宝箱串珠敲琴音乐宝宝益智玩具儿童节礼物
+
+    HAPEYLWJYYEMZLQ18JXGQ:{Barcode: '6943478008878', Code: '642367341246', GoodsId: '641978484388' }, // 德国hape音乐玩具婴幼儿木制乐器18键小钢琴早教启蒙1台儿童礼物
     
 };
 
