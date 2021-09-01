@@ -81,6 +81,8 @@ var productCorrespond = {
     HAPEWHYYXHRZBBXCZQQYL:{Barcode: '6943478019270', Code: '641919784536', GoodsId: '641897940039' }, // Hape五合一游戏盒绕珠百宝箱串珠敲琴音乐宝宝益智玩具儿童节礼物
 
     HAPEYLWJYYEMZLQ18JXGQ:{Barcode: '6943478008878', Code: '642367341246', GoodsId: '641978484388' }, // 德国hape音乐玩具婴幼儿木制乐器18键小钢琴早教启蒙1台儿童礼物
+
+    KLYCQZT24SXLX:{Barcode: '6950164811247', Code: '651514782496', GoodsId: '650190360323' }, // 卡乐优超轻粘土24色小蓝箱儿童手工彩泥幼儿园黏土diy软泥1箱
     
 };
 
